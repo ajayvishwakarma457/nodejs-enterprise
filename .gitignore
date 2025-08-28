@@ -1,0 +1,49 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+.env
+.env.*
+.DS_Store
+coverage/
+logs/
+*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# VS Code
+.vscode/
+
+# Docker
+*.local
+
+# Pact
+pact/logs/
+pact/pacts/
+
+# Helm
+helm/charts/
+
+# Terraform
+.terraform/
+terraform.tfstate*
+
+# Misc
+.idea/
+*.swp
+*.swo
+
+# MacOS
+.DS_Store
+
+# Test output
+junit.xml
+
+# Ignore generated files
+packages/*/dist/
+packages/*/build/
+packages/*/coverage/
+packages/*/node_modules/
