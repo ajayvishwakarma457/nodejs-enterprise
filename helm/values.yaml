@@ -1,0 +1,15 @@
+replicaCount: 1
+image:
+  repository: node:20-alpine
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 3000
+mongodb:
+  enabled: true
+redis:
+  enabled: true
+kafka:
+  enabled: true
+zookeeper:
+  enabled: true

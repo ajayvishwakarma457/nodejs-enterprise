@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - name: api-gateway
+          image: {{ .Values.image.repository }}
+          command: ["npm", "run", "dev"]
+          env:
+            - name: PORT
+              value: "{{ .Values.service.port }}"
+            - name: DATABASE_URL
+              value: "{{ .Values.mongodb.url }}"
+            - name: MONGO_URI
+              value: "{{ .Values.mongodb.url }}"
+            - name: REDIS_URL
+              value: "{{ .Values.redis.url }}"
+            - name: KAFKA_BROKER
+              value: "{{ .Values.kafka.broker }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}

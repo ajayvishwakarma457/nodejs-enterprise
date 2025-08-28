@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - name: api-gateway
+          image: node:20-alpine
+          command: ["npm", "run", "dev"]
+          env:
+            - name: PORT
+              value: "3000"
+            - name: DATABASE_URL
+              value: "mongodb://user:pass@mongodb:27017/db"
+            - name: MONGO_URI
+              value: "mongodb://mongodb:27017/db"
+            - name: REDIS_URL
+              value: "redis://redis:6379"
+            - name: KAFKA_BROKER
+              value: "kafka:9092"
+          ports:
+            - containerPort: 3000
